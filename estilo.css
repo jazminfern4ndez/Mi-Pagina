@@ -1,0 +1,262 @@
+/* ===== Paleta (variables CSS: cambiar un color aquí lo cambia en todo el sitio) ===== */
+:root {
+    --vino: #6d1f2f;
+    --ciruela: #4a2143;
+    --carbon: #2b2528;
+    --marfil: #fbf7f0;
+    --crema: #fffdf8;
+    --beige: #eadfd2;
+    --malva: #b79cb5;
+    --rosa: #d9b8bc;
+}
+
+/* ===== Base ===== */
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    background-color: var(--marfil);
+    color: var(--carbon);
+    font-family: Lato, Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.7;
+}
+
+.contenedor {
+    max-width: 860px;
+    margin: 20px auto 30px auto;
+    padding: 30px 36px;
+    background-color: var(--crema);
+    border: 1px solid var(--beige);
+    border-radius: 10px;
+    box-shadow: 0 4px 14px rgba(74, 33, 67, 0.12);
+}
+
+/* ===== Cabecera y menú ===== */
+.cabecera {
+    max-width: 860px;
+    margin: 25px auto 0 auto;
+    text-align: center;
+}
+
+.marca {
+    margin: 0;
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.2em;
+    color: var(--vino);
+}
+
+nav ul { list-style: none; margin: 6px 0 0 0; padding: 0; }
+nav li { display: inline; }
+
+nav a {
+    display: inline-block;
+    margin: 3px;
+    padding: 5px 18px;
+    border: 1px solid var(--vino);
+    border-radius: 20px;
+    color: var(--vino);
+    text-decoration: none;
+    font-size: 0.95em;
+    letter-spacing: 0.05em;
+}
+
+nav a:hover, nav a.activa {
+    background-color: var(--vino);
+    color: var(--crema);
+}
+
+/* ===== Títulos y texto ===== */
+h1, h2, h3 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+h1 { text-align: center; font-size: 2.9em; color: var(--vino); margin: 0.1em 0 0.4em 0; }
+
+h2 {
+    font-size: 1.9em;
+    color: var(--ciruela);
+    margin-top: 1.8em;
+    padding-bottom: 0.2em;
+    border-bottom: 1px solid var(--beige);
+}
+
+/* ===== La parte del simbolo fue sacado con IA como parte de la estética ===== */
+h2::before { content: "✦ "; font-size: 0.55em; color: var(--malva); vertical-align: middle; }
+h3 { font-size: 1.4em; color: var(--ciruela); }
+
+.etiqueta {
+    text-align: center;
+    margin: 0;
+    font-size: 0.8em;
+    letter-spacing: 0.3em;
+    color: var(--ciruela);
+}
+.etiqueta::before { content: "☾ "; color: var(--malva); }
+.etiqueta::after { content: " ✦"; color: var(--malva); }
+
+.bienvenida { max-width: 650px; margin: 0 auto; text-align: center; font-size: 1.1em; }
+
+strong { color: var(--vino); }
+a { color: var(--vino); text-decoration-color: var(--rosa); }
+a:hover { color: var(--ciruela); }
+ul { padding-left: 1.4em; }
+li::marker { color: var(--vino); }
+
+/* ===== Imágenes, video, audio y mapas ===== */
+img { max-width: 100%; height: auto; }
+
+.galeria { text-align: center; margin: 20px 0; }
+
+.imagen {
+    display: inline-block;
+    width: 46%;
+    margin: 10px;
+    padding: 10px 10px 26px 10px;
+    background-color: #fff;
+    border: 1px solid var(--beige);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.18);
+}
+.imagen:nth-child(odd) { transform: rotate(-1.5deg); }
+.imagen:nth-child(even) { transform: rotate(1.5deg); }
+.imagen img { display: block; width: 100%; height: 260px; object-fit: cover; }
+
+main > img {
+    display: block;
+    margin: 18px auto;
+    padding: 10px 10px 26px 10px;
+    background-color: #fff;
+    border: 1px solid var(--beige);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.18);
+}
+
+video { display: block; max-width: 100%; height: auto; margin: 12px 0; border-radius: 8px; border: 1px solid var(--beige); }
+audio { display: block; width: 100%; margin: 12px 0; }
+
+iframe {
+    max-width: 100%;
+    margin: 6px;
+    vertical-align: top;
+    border: 4px solid #fff !important;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* ===== Reloj de la portada ===== */
+.reloj {
+    margin: 22px 0;
+    padding: 10px 14px;
+    text-align: center;
+    background-color: #fff;
+    border: 3px double var(--rosa);
+    border-radius: 8px;
+}
+.reloj p { margin: 2px 0; }
+#saludo { color: var(--vino); font-style: italic; }
+#fecha { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.6em; color: var(--ciruela); }
+#hora { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 2.4em; letter-spacing: 0.1em; color: var(--vino); }
+#visitas { font-size: 0.85em; color: var(--malva); }
+
+/* ===== Tarjetas (convertidor y calculadora) ===== */
+.tarjeta {
+    float: left;
+    width: 48%;
+    margin: 0 1% 16px 1%;
+    padding: 6px 18px 16px 18px;
+    background-color: #fff;
+    border: 1px solid var(--vino);
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(74, 33, 67, 0.15);
+}
+.tarjeta h3 { margin-top: 0.6em; text-align: center; }
+.limpiar { clear: both; }
+
+#resultado-conv { margin-top: 10px; text-align: center; }
+
+#pantalla { text-align: right; font-size: 1.5em; margin-bottom: 8px; }
+.teclas { text-align: center; }
+.teclas button {
+    width: 23%;
+    margin: 1%;
+    padding: 9px 0;
+    background-color: var(--crema);
+    color: var(--carbon);
+    border: 1px solid var(--malva);
+    border-radius: 8px;
+}
+.teclas button:hover { background-color: var(--beige); }
+.teclas .op { background-color: var(--ciruela); color: var(--crema); border-color: var(--ciruela); }
+.teclas .op:hover { background-color: var(--vino); }
+.teclas .cero { width: 48%; }
+
+/* ===== Formularios ===== */
+fieldset { margin: 0 0 18px 0; padding: 10px 18px 14px 18px; border: 1px solid var(--rosa); border-radius: 8px; }
+legend { padding: 0 8px; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.3em; color: var(--vino); }
+label { display: inline-block; margin: 4px 14px 4px 0; }
+
+input[type="text"], input[list], select, textarea {
+    width: 100%;
+    max-width: 440px;
+    padding: 8px 10px;
+    background-color: #fff;
+    border: 1px solid var(--malva);
+    border-radius: 6px;
+    font: inherit;
+}
+input:focus, select:focus, textarea:focus { outline: 2px solid var(--rosa); }
+input[type="radio"], input[type="checkbox"] { accent-color: var(--vino); }
+
+button, input[type="submit"] {
+    margin: 4px;
+    padding: 9px 22px;
+    background-color: var(--vino);
+    color: var(--crema);
+    border: 1px solid var(--vino);
+    border-radius: 20px;
+    font: inherit;
+    cursor: pointer;
+}
+button:hover { background-color: var(--ciruela); border-color: var(--ciruela); }
+button:disabled { background-color: var(--malva); border-color: var(--malva); cursor: default; }
+button.secundario { background-color: transparent; color: var(--vino); }
+button.secundario:hover { background-color: var(--beige); }
+
+.error { display: block; min-height: 1.3em; font-size: 0.88em; font-style: italic; color: var(--vino); }
+.exito { margin-top: 14px; padding: 10px 16px; background-color: #f6ecee; border-left: 4px solid var(--vino); border-radius: 6px; }
+#contador { font-size: 0.85em; color: var(--malva); }
+
+/* ===== Cuestionario ===== */
+.pregunta {
+    margin: 14px 0;
+    padding: 8px 18px;
+    background-color: #fff;
+    border: 1px solid var(--beige);
+    border-left: 4px solid var(--ciruela);
+    border-radius: 8px;
+}
+.pregunta p { margin: 0.3em 0; }
+.pregunta label { display: block; margin: 2px 0; }
+.resp { display: block; font-size: 0.92em; }
+.bien { color: var(--ciruela); font-weight: bold; }
+.mal { color: var(--vino); font-weight: bold; }
+
+/* ===== Tabla de la galería ===== */
+table { width: 100%; margin: 15px 0; border-collapse: collapse; background-color: var(--crema); }
+th, td { padding: 12px; border: 1px solid var(--beige); text-align: center; vertical-align: top; font-size: 0.95em; }
+th { background-color: var(--ciruela); color: var(--crema); font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.4em; font-weight: 600; }
+td.categoria { width: 90px; vertical-align: middle; background-color: #f6ecee; color: var(--vino); font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.3em; font-weight: 600; }
+td img { width: 100%; max-width: 200px; margin-bottom: 6px; border: 6px solid #fff; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25); }
+
+/* ===== Pie de página. La parte del simbolo fue sacado con IA como parte de la estética ===== */
+footer { padding: 10px 10px 30px 10px; text-align: center; font-size: 0.9em; color: var(--ciruela); }
+footer::before { content: "☾ ✦ ♡ ✦ ☾"; display: block; letter-spacing: 0.3em; color: var(--malva); }
+
+/* ===== Pantallas pequeñas ===== */
+@media (max-width: 700px) {
+    .contenedor { margin: 15px 8px; padding: 20px 16px; }
+    .tarjeta { float: none; width: 100%; margin: 0 0 16px 0; }
+    .imagen { width: 90%; }
+    td.categoria { width: auto; }
+}

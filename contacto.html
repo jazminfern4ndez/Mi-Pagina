@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Jazmín E. Och Fernández">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Dancing+Script:wght@600&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="estilo.css">
+    <script type="text/javascript" src="script.js" defer></script>
+</head>
+
+<body>
+
+    <header class="cabecera">
+        <p class="marca">Jaz ✦</p>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="autobiografia.html">Autobiografía</a></li>
+                <li><a href="galery.html">Galería</a></li>
+                <li><a href="contacto.html" class="activa">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="contenedor">
+
+        <p class="etiqueta">ESCRÍBEME</p>
+        <h1>Contacto</h1>
+
+        <p>
+            Si quieres contarme algo, llena el siguiente formulario. Todos los campos
+            marcados con * son obligatorios.
+        </p>
+
+        <form id="formulario" name="contacto" action="#" onsubmit="return validarFormulario()" novalidate>
+
+            <fieldset>
+                <legend>Tus datos</legend>
+
+                <label for="nombre">Nombre: *</label><br>
+                <input type="text" id="nombre" name="nombre" onblur="validarTexto('nombre')">
+                <span class="error" id="error-nombre"></span>
+
+                <label for="apellidos">Apellidos: *</label><br>
+                <input type="text" id="apellidos" name="apellidos" onblur="validarTexto('apellidos')">
+                <span class="error" id="error-apellidos"></span>
+
+                <label for="correo">Correo electrónico: *</label><br>
+                <input type="text" id="correo" name="correo" onblur="validarCorreo()">
+                <span class="error" id="error-correo"></span>
+
+                <p>Género: *</p>
+                <label><input type="radio" name="genero" id="genero-f" value="Femenino"> Femenino</label>
+                <label><input type="radio" name="genero" id="genero-m" value="Masculino"> Masculino</label>
+                <label><input type="radio" name="genero" id="genero-o" value="Otro"> Otro</label>
+                <span class="error" id="error-genero"></span>
+            </fieldset>
+
+            <fieldset>
+                <legend>Sobre ti</legend>
+
+                <p>Intereses: *</p>
+                <label><input type="checkbox" name="interes" id="interes-lectura" value="Deportes"> Hacer deporte</label>
+                <label><input type="checkbox" name="interes" value="Televisión"> Ver televisión</label>
+                <label><input type="checkbox" name="interes" value="Ejercicio"> Hacer ejercicio</label>
+                <span class="error" id="error-intereses"></span>
+
+                <label for="estudios">Estudios actuales: *</label><br>
+                <select id="estudios" name="estudios" onchange="validarEstudios()">
+                    <option value="">Selecciona una opción</option>
+                    <option value="Secundaria">Secundaria</option>
+                    <option value="Bachillerato">Bachillerato</option>
+                    <option value="Licenciatura">Licenciatura</option>
+                </select>
+                <span class="error" id="error-estudios"></span>
+
+                <label for="navegador">Navegador que más usas (opcional):</label><br>
+                <input list="buscadores" id="navegador" name="navegador">
+                <datalist id="buscadores">
+                    <option value="Chrome">
+                    <option value="Firefox">
+                    <option value="Internet Explorer">
+                    <option value="Opera">
+                    <option value="Safari">
+                    <option value="Microsoft Edge">
+                </datalist>
+            </fieldset>
+
+            <fieldset>
+                <legend>Tu mensaje</legend>
+
+                <label for="mensaje">Mensaje: *</label><br>
+                <textarea id="mensaje" name="mensaje" rows="5" onkeyup="contar()" onblur="validarMensaje()"></textarea>
+                <span id="contador">0 caracteres</span>
+                <span class="error" id="error-mensaje"></span>
+
+                <label><input type="checkbox" id="condiciones" name="condiciones"> He leído y acepto que mis datos se usen solo para contactarme. *</label>
+                <span class="error" id="error-condiciones"></span>
+            </fieldset>
+
+            <input type="submit" id="enviar" value="Enviar mensaje">
+            <button type="reset" class="secundario" onclick="limpiarFormulario()">Limpiar</button>
+
+            <div id="resultado-form"></div>
+
+        </form>
+
+        <p>
+            Si quieres conocer un poco más sobre mí antes de contactarme,
+            puedes regresar a la <a href="index.html">página principal</a>.
+        </p>
+
+    </main>
+
+    <footer>
+        <p>2026. Elaborado por: Jazmín E. Och Fernández</p>
+    </footer>
+
+</body>
+
+</html>
