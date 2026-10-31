@@ -196,7 +196,7 @@ fieldset { margin: 0 0 18px 0; padding: 10px 18px 14px 18px; border: 1px solid v
 legend { padding: 0 8px; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.3em; color: var(--vino); }
 label { display: inline-block; margin: 4px 14px 4px 0; }
 
-input[type="text"], input[list], select, textarea {
+input[type="text"], input[type="password"], input[type="email"], input[list], select, textarea {
     width: 100%;
     max-width: 440px;
     padding: 8px 10px;
@@ -248,6 +248,42 @@ th, td { padding: 12px; border: 1px solid var(--beige); text-align: center; vert
 th { background-color: var(--ciruela); color: var(--crema); font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.4em; font-weight: 600; }
 td.categoria { width: 90px; vertical-align: middle; background-color: #f6ecee; color: var(--vino); font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.3em; font-weight: 600; }
 td img { width: 100%; max-width: 200px; margin-bottom: 6px; border: 6px solid #fff; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25); }
+
+/* ===== Módulo de usuarios ===== */
+.acceso { max-width: 520px; margin: 0 auto; }
+.alerta { margin: 14px 0; padding: 10px 16px; background-color: #fbeff0; border-left: 4px solid var(--vino); border-radius: 6px; color: var(--vino); }
+.sesion { margin: 8px 0 0 0; font-size: 0.9em; color: var(--ciruela); }
+.nota { font-size: 0.88em; font-style: italic; color: var(--ciruela); }
+
+.fuerza { display: block; font-size: 0.85em; }
+.f1 { color: var(--vino); }
+.f2 { color: #a0603a; }
+.f3, .f4 { color: var(--ciruela); font-weight: bold; }
+
+a.boton {
+    display: inline-block;
+    margin: 4px;
+    padding: 9px 22px;
+    background-color: var(--vino);
+    color: var(--crema);
+    border: 1px solid var(--vino);
+    border-radius: 20px;
+    text-decoration: none;
+}
+a.boton:hover { background-color: var(--ciruela); border-color: var(--ciruela); color: var(--crema); }
+a.boton.secundario { background-color: transparent; color: var(--vino); }
+a.boton.secundario:hover { background-color: var(--beige); color: var(--vino); }
+.chico, a.boton.chico { margin: 2px; padding: 4px 14px; font-size: 0.85em; }
+button.peligro { background-color: transparent; color: var(--vino); }
+button.peligro:hover { background-color: var(--vino); color: var(--crema); }
+
+.tabla-desliza { overflow-x: auto; }
+table.usuarios th { font-size: 1.15em; }
+table.usuarios td { vertical-align: middle; }
+table.usuarios tr:nth-child(odd) td { background-color: #fff; }
+table.usuarios tr.yo td { background-color: #f6ecee; }
+td.acciones { white-space: nowrap; }
+td.acciones form { display: inline; }
 
 /* ===== Pie de página. La parte del simbolo fue sacado con IA como parte de la estética ===== */
 footer { padding: 10px 10px 30px 10px; text-align: center; font-size: 0.9em; color: var(--ciruela); }

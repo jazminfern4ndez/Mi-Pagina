@@ -328,6 +328,99 @@ function limpiarFormulario() {
     boton.value = "Enviar mensaje";
 }
 
+//Módulo de usuarios: validación de login, registro y modificación
+//(reutiliza ponerError, revisar, validarTexto y validarCorreo de arriba)
+function validarVacio(id) {
+    var v = document.getElementById(id).value.trim();
+    return ponerError(id, v === "" ? "Este campo es obligatorio" : "");
+}
+
+function validarUsuario() {
+    var v = document.getElementById("usuario").value.trim();
+    var msg = "";
+    if (v === "") { msg = "Este campo es obligatorio"; }
+    else if (!/^[A-Za-z0-9_]{4,20}$/.test(v)) { msg = "De 4 a 20 caracteres: letras, números o guion bajo (sin espacios ni acentos)"; }
+    return ponerError("usuario", msg);
+}
+
+function validarClave(obligatoria) {
+    var v = document.getElementById("clave").value;
+    var msg = "";
+    if (v === "") {
+        if (obligatoria) { msg = "Este campo es obligatorio"; }
+    }
+    else if (v.length < 8) { msg = "La contraseña debe tener al menos 8 caracteres"; }
+    else if (!/[A-Za-z]/.test(v) || !/[0-9]/.test(v)) { msg = "Combina letras y números"; }
+    return ponerError("clave", msg);
+}
+
+function validarReclave() {
+    var clave = document.getElementById("clave").value;
+    var re = document.getElementById("reclave").value;
+    var msg = "";
+    if (clave !== "" && re === "") { msg = "Vuelve a escribir la contraseña"; }
+    else if (clave !== re) { msg = "Las contraseñas no coinciden"; }
+    return ponerError("reclave", msg);
+}
+
+function medirClave() {
+    var v = document.getElementById("clave").value;
+    var caja = document.getElementById("fuerza");
+    var puntos = 0;
+    if (v.length >= 8) { puntos++; }
+    if (/[A-Z]/.test(v) && /[a-z]/.test(v)) { puntos++; }
+    if (/[0-9]/.test(v)) { puntos++; }
+    if (/[^A-Za-z0-9]/.test(v)) { puntos++; }
+
+    var textos = ["", "Débil", "Regular", "Buena", "Muy segura"];
+    caja.className = "fuerza f" + puntos;
+    caja.innerHTML = v === "" ? "" : "Seguridad: " + textos[puntos];
+    if (document.getElementById("reclave").value !== "") { validarReclave(); }
+}
+
+function verClaves(casilla) {
+    var tipo = casilla.checked ? "text" : "password";
+    var ids = ["clave", "reclave"];
+    for (var i = 0; i < ids.length; i++) {
+        var campo = document.getElementById(ids[i]);
+        if (campo) { campo.type = tipo; }
+    }
+}
+
+function validarLogin() {
+    primerError = null;
+    revisar(validarVacio("usuario"), "usuario");
+    revisar(validarVacio("clave"), "clave");
+    if (primerError !== null) { document.getElementById(primerError).focus(); return false; }
+    return true;
+}
+
+function validarCuenta(claveObligatoria) {
+    primerError = null;
+    revisar(validarTexto("nombre"), "nombre");
+    revisar(validarTexto("apellidos"), "apellidos");
+    revisar(validarCorreo(), "correo");
+    revisar(validarUsuario(), "usuario");
+    revisar(validarClave(claveObligatoria), "clave");
+    revisar(validarReclave(), "reclave");
+    if (primerError !== null) { document.getElementById(primerError).focus(); return false; }
+    return true;
+}
+
+function validarRegistro() { return validarCuenta(true); }
+function validarEdicion() { return validarCuenta(false); }
+
+function limpiarErrores() {
+    var errores = document.getElementsByClassName("error");
+    for (var i = 0; i < errores.length; i++) { errores[i].innerHTML = ""; }
+    var fuerza = document.getElementById("fuerza");
+    if (fuerza) { fuerza.innerHTML = ""; }
+}
+
+function confirmarEliminar(usuario) {
+    return confirm("¿Seguro que quieres eliminar al usuario «" + usuario + "»? Esta acción no se puede deshacer.");
+}
+
 //Arranque: solo corre lo que exista en cada página
 if (document.getElementById("hora")) {
     actualizarReloj();
